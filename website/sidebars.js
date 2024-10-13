@@ -10,6 +10,7 @@ module.exports = {
             label: "Components",
             items: [
                 "component-event",
+                "component-todo",
                 "component-calendar",
                 "component-timezone",
             ],

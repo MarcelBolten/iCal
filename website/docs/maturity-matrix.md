@@ -23,7 +23,7 @@ See [RFC 5545 section 3.6](https://tools.ietf.org/html/rfc5545#section-3.6).
 | Component | Supported |
 | --------- | :-------: |
 | VEVENT    |    ✔     |
-| VTODO     |    ✖     |
+| VTODO     |    ✔     |
 | VJOURNAL  |    ✖     |
 | VFREEBUSY |    ✖     |
 | VTIMEZONE |   (✔)    |
@@ -54,6 +54,47 @@ See [RFC 5545 section 3.6.1](https://tools.ietf.org/html/rfc5545#section-3.6.1).
 | recurid                     |    ✖     |
 | rrule                       |    ✖     |
 | dtend                       |    ✔     |
+| duration                    |    ✖     |
+| attach                      |    ✔     |
+| attendee                    |    ✔     |
+| categories                  |   (✔)    |
+| comment                     |    ✖     |
+| contact                     |    ✖     |
+| exdate                      |    ✖     |
+| rstatus                     |    ✖     |
+| related                     |    ✖     |
+| resources                   |    ✖     |
+| rdate                       |    ✖     |
+| x-prop                      |   (✔)    |
+| iana-prop                   |   (✔)    |
+| x-apple-structured-location |    ✔     |
+
+## Todo Component
+
+See [RFC 5545 section 3.6.2](https://tools.ietf.org/html/rfc5545#section-3.6.2).
+
+| Property                    | Supported |
+| --------------------------- | :-------: |
+| dtstamp                     |    ✔     |
+| uid                         |    ✔     |
+| dtstart                     |    ✖     |
+| class                       |    ✖     |
+| completed                   |    ✔     |
+| created                     |    ✖     |
+| description                 |    ✔     |
+| geo                         |    ✔     |
+| last-mod                    |    ✔     |
+| location                    |    ✔     |
+| organizer                   |    ✔     |
+| percent                     |    ✖     |
+| priority                    |    ✖     |
+| seq                         |    ✖     |
+| status                      |    ✔     |
+| summary                     |    ✔     |
+| url                         |    ✔     |
+| recurid                     |    ✖     |
+| rrule                       |    ✖     |
+| due                         |    ✔     |
 | duration                    |    ✖     |
 | attach                      |    ✔     |
 | attendee                    |    ✔     |

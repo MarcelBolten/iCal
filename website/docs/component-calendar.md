@@ -2,7 +2,7 @@
 title: Calendar
 ---
 
-The calendar is basically a collection of events.
+The calendar is basically a collection of events and/or to-do tasks.
 A calendar can be represented as a `.ical` file.
 
 ## Adding events
@@ -45,6 +45,48 @@ $eventGenerator = function(): Generator {
 };
 
 $calendar = new Calendar($eventGenerator());
+```
+
+## Adding to-do tasks
+
+To-do tasks can be added in the same way as events, either via the named constructor:
+
+```php
+use Eluceo\iCal\Domain\Entity\Calendar;
+use Eluceo\iCal\Domain\Entity\Todo;
+
+$todos = [
+    new Todo(),
+    new Todo(),
+];
+
+$calendar = new Calendar([], $todos);
+```
+
+or calling the `addTodo` method:
+
+```php
+use Eluceo\iCal\Domain\Entity\Calendar;
+use Eluceo\iCal\Domain\Entity\Todo;
+
+$calendar = new Calendar();
+$calendar
+    ->addTodo(new Todo())
+    ->addTodo(new Todo());
+```
+
+or providing a generator, that creates to-do tasks:
+
+```php
+use Eluceo\iCal\Domain\Entity\Calendar;
+use Eluceo\iCal\Domain\Entity\Todo;
+
+$todoGenerator = function(): Generator {
+    yield new Todo();
+    yield new Todo();
+};
+
+$calendar = new Calendar([], $todoGenerator());
 ```
 
 ## Adding time zones

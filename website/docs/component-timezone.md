@@ -2,7 +2,7 @@
 title: Time Zone
 ---
 
-The time zone event domain object `\Eluceo\iCal\Domain\Entity\TimeZone` represents a definition of a time zone.
+The time zone domain object `\Eluceo\iCal\Domain\Entity\TimeZone` represents a definition of a time zone.
 It contains the transitions of standard and daylight saving time and defines offsets to the UTC time.
 
 When using local time, the time zone should be defined to ensure correct local time.

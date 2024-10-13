@@ -12,6 +12,9 @@
 namespace Eluceo\iCal\Domain\Entity;
 
 use DateInterval;
+use Eluceo\iCal\Domain\Collection\Todos;
+use Eluceo\iCal\Domain\Collection\TodosArray;
+use Eluceo\iCal\Domain\Collection\TodosGenerator;
 use Eluceo\iCal\Domain\Collection\Events;
 use Eluceo\iCal\Domain\Collection\EventsArray;
 use Eluceo\iCal\Domain\Collection\EventsGenerator;
@@ -26,6 +29,8 @@ class Calendar
 
     private Events $events;
 
+    private Todos $todos;
+
     /**
      * @var array<TimeZone>
      */
@@ -33,10 +38,12 @@ class Calendar
 
     /**
      * @param array<array-key, Event>|Iterator<Event>|Events $events
+     * @param array<array-key, Todo>|Iterator<Todo>|Todos $todos
      */
-    public function __construct($events = [])
+    public function __construct($events = [], $todos = [])
     {
         $this->events = $this->ensureEventsObject($events);
+        $this->todos = $this->ensureTodosObject($todos);
     }
 
     /**
@@ -57,6 +64,26 @@ class Calendar
         }
 
         throw new InvalidArgumentException('$events must be an array, an object implementing Iterator or an instance of Events.');
+    }
+
+    /**
+     * @param array<array-key, Todo>|Iterator<Todo>|Todos $todos
+     */
+    private function ensureTodosObject($todos = []): Todos
+    {
+        if ($todos instanceof Todos) {
+            return $todos;
+        }
+
+        if (is_array($todos)) {
+            return new TodosArray($todos);
+        }
+
+        if ($todos instanceof Iterator) {
+            return new TodosGenerator($todos);
+        }
+
+        throw new InvalidArgumentException('$todos must be an array, an object implementing Iterator or an instance of Todos.');
     }
 
     public function getPublishedTTL(): ?DateInterval
@@ -95,6 +122,17 @@ class Calendar
         return $this;
     }
 
+    public function getTodos(): Todos
+    {
+        return $this->todos;
+    }
+
+    public function addTodo(Todo $todo): self
+    {
+        $this->todos->addTodo($todo);
+
+        return $this;
+    }
     /**
      * @return array<TimeZone>
      */

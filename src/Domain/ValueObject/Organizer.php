@@ -22,7 +22,7 @@ final class Organizer
     private ?EmailAddress $sentBy;
 
     /**
-     * To specify reference to a directory entry associated wit the calendar user specified by the property.
+     * To specify reference to a directory entry associated with the calendar user specified by the property.
      *
      * @see https://tools.ietf.org/html/rfc5545#section-3.2.6
      */

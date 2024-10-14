@@ -16,6 +16,7 @@ use DateTimeImmutable;
 use DateTimeZone;
 use Eluceo\iCal\Domain\Entity\Calendar;
 use Eluceo\iCal\Domain\Entity\Event;
+use Eluceo\iCal\Domain\Entity\Todo;
 use Eluceo\iCal\Domain\ValueObject\Timestamp;
 use Eluceo\iCal\Domain\ValueObject\UniqueIdentifier;
 use Eluceo\iCal\Presentation\ContentLine;
@@ -39,7 +40,7 @@ class CalendarFactoryTest extends TestCase
         self::assertSame($expected, (string) (new CalendarFactory())->createCalendar($calendar));
     }
 
-    public function testRenderWithEvents()
+    public function testRenderWithEventsAndTodos()
     {
         $currentTime = new Timestamp(
             DateTimeImmutable::createFromFormat(
@@ -52,6 +53,10 @@ class CalendarFactoryTest extends TestCase
             [
                 (new Event(new UniqueIdentifier('event1')))->touch($currentTime),
                 (new Event(new UniqueIdentifier('event2')))->touch($currentTime),
+            ],
+            [
+                (new Todo(new UniqueIdentifier('todo1')))->touch($currentTime),
+                (new Todo(new UniqueIdentifier('todo2')))->touch($currentTime),
             ]
         );
         $calendar->setProductIdentifier('-//test/ical//2.0/EN');
@@ -69,6 +74,14 @@ class CalendarFactoryTest extends TestCase
             'UID:event2',
             'DTSTAMP:20191110T112233Z',
             'END:VEVENT',
+            'BEGIN:VTODO',
+            'UID:todo1',
+            'DTSTAMP:20191110T112233Z',
+            'END:VTODO',
+            'BEGIN:VTODO',
+            'UID:todo2',
+            'DTSTAMP:20191110T112233Z',
+            'END:VTODO',
             'END:VCALENDAR',
             '',
         ]);

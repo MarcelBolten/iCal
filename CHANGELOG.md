@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+-   Support `VTODO` component with similar property coverage as `VEVENT` component (see [Maturity Matrix](https://github.com/markuspoerschke/iCal/blob/2.x/website/docs/maturity-matrix.md#todo-component)):
+    `Due` and `Duration` properties are added for the to-do component.
+
 ## [2.14.0] - 2024-07-11
 
 ### Fixed

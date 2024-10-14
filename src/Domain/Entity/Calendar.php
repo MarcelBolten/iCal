@@ -12,12 +12,12 @@
 namespace Eluceo\iCal\Domain\Entity;
 
 use DateInterval;
-use Eluceo\iCal\Domain\Collection\Todos;
-use Eluceo\iCal\Domain\Collection\TodosArray;
-use Eluceo\iCal\Domain\Collection\TodosGenerator;
 use Eluceo\iCal\Domain\Collection\Events;
 use Eluceo\iCal\Domain\Collection\EventsArray;
 use Eluceo\iCal\Domain\Collection\EventsGenerator;
+use Eluceo\iCal\Domain\Collection\Todos;
+use Eluceo\iCal\Domain\Collection\TodosArray;
+use Eluceo\iCal\Domain\Collection\TodosGenerator;
 use InvalidArgumentException;
 use Iterator;
 
@@ -38,7 +38,7 @@ class Calendar
 
     /**
      * @param array<array-key, Event>|Iterator<Event>|Events $events
-     * @param array<array-key, Todo>|Iterator<Todo>|Todos $todos
+     * @param array<array-key, Todo>|Iterator<Todo>|Todos    $todos
      */
     public function __construct($events = [], $todos = [])
     {
@@ -133,6 +133,7 @@ class Calendar
 
         return $this;
     }
+
     /**
      * @return array<TimeZone>
      */

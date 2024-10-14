@@ -3,7 +3,7 @@
 /*
  * This file is part of the eluceo/iCal package.
  *
- * (c) 2024 Marcel Bolten <github@marcelbolten.de>
+ * (c) 2024 Markus Poerschke <markus@poerschke.nrw>
  *
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
@@ -21,28 +21,22 @@ use Eluceo\iCal\Domain\ValueObject\Timestamp;
 use Eluceo\iCal\Domain\ValueObject\UniqueIdentifier;
 use Eluceo\iCal\Domain\ValueObject\Uri;
 
+/**
+ * @SuppressWarnings(PHPMD.ExcessivePublicCount)
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
+ */
 class Todo
 {
     private UniqueIdentifier $uniqueIdentifier;
-
     private Timestamp $touchedAt;
-
     private ?string $summary = null;
-
     private ?string $description = null;
-
     private ?Uri $url = null;
-
     private ?Timestamp $due = null;
-
     private ?Location $location = null;
-
     private ?Organizer $organizer = null;
-
     private ?Timestamp $lastModified = null;
-
     private ?TodoStatus $status = null;
-
     private ?Timestamp $completed = null;
 
     /**
@@ -68,7 +62,6 @@ class Todo
     public function __construct(UniqueIdentifier $uniqueIdentifier = null)
     {
         $this->uniqueIdentifier = $uniqueIdentifier ?? UniqueIdentifier::createRandom();
-        /** @psalm-suppress InternalMethod */
         $this->touchedAt = new Timestamp();
     }
 
@@ -84,7 +77,6 @@ class Todo
 
     public function touch(Timestamp $dateTime = null): self
     {
-        /** @psalm-suppress InternalMethod */
         $this->touchedAt = $dateTime ?? new Timestamp();
 
         return $this;

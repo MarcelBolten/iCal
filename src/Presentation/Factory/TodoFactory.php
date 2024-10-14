@@ -3,7 +3,7 @@
 /*
  * This file is part of the eluceo/iCal package.
  *
- * (c) 2024 Marcel Bolten <github@marcelbolten.de>
+ * (c) 2024 Markus Poerschke <markus@poerschke.nrw>
  *
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
@@ -133,7 +133,7 @@ class TodoFactory
     protected function getComponents(Todo $todo): Generator
     {
         yield from array_map(
-            fn(Alarm $alarm) => $this->alarmFactory->createComponent($alarm),
+            fn (Alarm $alarm) => $this->alarmFactory->createComponent($alarm),
             $todo->getAlarms()
         );
     }
